@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f3d2e">
+  <title>Электрондук Тасбих</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">☪</span>
+      <h1>Электрондук Тасбих</h1>
+    </div>
+    <button id="themeToggle" class="icon-btn" aria-label="Караңгы режимди которуу">🌓</button>
+  </header>
+
+  <main>
+    <!-- БАШКЫ БЕТ -->
+    <section id="home" class="page active" aria-label="Башкы бет">
+      <p class="lead">Ас салаум алейкум! Зикир тандап, тасбихти баштаңыз.</p>
+      <h2>Зикирлер</h2>
+      <div id="dhikrList" class="cards"></div>
+    </section>
+
+    <!-- ТАСБИХ -->
+    <section id="tasbih" class="page" aria-label="Тасбих">
+      <div class="current">
+        <p id="currentArabic" class="arabic" lang="ar" dir="rtl">سُبْحَانَ اللَّهِ</p>
+        <p id="currentRead" class="read">Субхааналлах</p>
+      </div>
+
+      <div class="targets" role="group" aria-label="Максат тандоо">
+        <button class="chip" data-target="33">33</button>
+        <button class="chip" data-target="66">66</button>
+        <button class="chip" data-target="99">99</button>
+      </div>
+
+      <div class="ring" id="ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ring-bg" cx="60" cy="60" r="54"/>
+          <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="54"/>
+        </svg>
+        <button id="countBtn" class="count-btn" aria-label="Зикир санын көбөйтүү">
+          <span id="counter" class="counter" aria-live="polite">0</span>
+          <span class="count-label">Зикир саны</span>
+        </button>
+      </div>
+      <p class="goal">Максат: <strong id="goalText">33</strong></p>
+
+      <button id="resetBtn" class="btn-outline">Кайра баштоо</button>
+    </section>
+
+    <!-- ЭРТЕҢ МЕНЕН -->
+    <section id="morning" class="page" aria-label="Эртең мененки зикирлер">
+      <h2>Эртең мененки зикирлер</h2>
+      <div id="morningList" class="cards"></div>
+    </section>
+
+    <!-- КЕЧКИ -->
+    <section id="evening" class="page" aria-label="Кечки зикирлер">
+      <h2>Кечки зикирлер</h2>
+      <div id="eveningList" class="cards"></div>
+    </section>
+
+    <!-- ДУБАЛАР -->
+    <section id="duas" class="page" aria-label="Маснун дубалар">
+      <h2>Маснун дубалар</h2>
+      <div id="duaList" class="cards"></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Негизги навигация">
+    <button data-page="home" class="active"><span aria-hidden="true">🕌</span>Башкы бет</button>
+    <button data-page="tasbih"><span aria-hidden="true">📿</span>Тасбих</button>
+    <button data-page="morning"><span aria-hidden="true">🌅</span>Эртең менен</button>
+    <button data-page="evening"><span aria-hidden="true">🌙</span>Кечки</button>
+    <button data-page="duas"><span aria-hidden="true">🤲</span>Дубалар</button>
+  </nav>
+
+  <!-- Белги / notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Confirmation modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Кайра баштайсызбы?</h3>
+      <p>Counter 0гө түшөт.</p>
+      <div class="modal-actions">
+        <button id="cancelReset" class="btn-outline">Жок</button>
+        <button id="confirmReset" class="btn-solid">Ооба</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
